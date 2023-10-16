@@ -1,55 +1,42 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1000,
-  "height": 800,
+  "width": 800,
+  "height": 600,
   "data": {
-    "url": "https://raw.githubusercontent.com/dngo0002/FTI3179/main/WorldRenewableEnergy.csv",
-    "format": {"type": "csv"}
+    "url": "https://raw.githubusercontent.com/dngo0002/FIT3179_VIS_2/main/Vis%20Files/Data/Aus_vs_Top_5_GDP.csv"
   },
-  "params": [
-    {
-      "name": "startingYear",
-      "value": 1966,
+  "selection": {
+    "countryFilter": {
+      "type": "multi",
+      "fields": ["Country"],
       "bind": {
-        "input": "range",
-        "min": 1966,
-        "max": 2020,
-        "step": 1,
-        "name": "Starting Year:"
-      }
-    }
-  ],
-  "transform": [{"filter": "datum.Year >= startingYear"}],
-  "layer": [
-    {
-      "mark": {"type": "line", "strokeWidth": 5},
-      "encoding": {
-        "x": {"field": "Year", "type": "nominal"},
-        "y": {"field": "Percentage", "type": "quantitative"},
-        "tooltip": [
-          {"field": "Year", "type": "nominal"},
-          {"field": "Percentage", "type": "quantitative"}
+        "input": "select",
+        "options": [
+          "All",
+          "Australia",
+          "Germany",
+          "United States",
+          "United Kingdom",
+          "China",
+          "Japan"
         ]
       }
-    },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "baseline": "middle",
-        "fontSize": 14,
-        "color": "black",
-        "font": "Arial",
-        "fontWeight": "bold"
-      },
-      "encoding": {
-        "x": {"value": 300},
-        "y": {"value": 420},
-        "text": {
-          "value": "The world's energy generation has steadily increased since 2003"
-        }
-      }
     }
-  ],
+  },
+  "mark": {"type": "line", "point": true},
+  "encoding": {
+    "x": {"field": "Year", "type": "ordinal"},
+    "y": {"field": "Percentage", "type": "quantitative"},
+    "color": {"field": "Country", "type": "nominal"},
+    "tooltip": [
+      {"field": "Country", "type": "nominal"},
+      {"field": "Year", "type": "ordinal"},
+      {"field": "Percentage", "type": "quantitative"}
+    ],
+    "opacity": {
+      "condition": {"selection": "countryFilter", "value": 1},
+      "value": 0.2
+    }
+  },
   "config": {}
 }
