@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.25.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.15.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.22.2"></script>
+</head>
+<body>
+  <div id="vis"/>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1000,
+  "height": 800,
+  "data": {
+    "url": "https://raw.githubusercontent.com/dngo0002/FTI3179/main/WorldRenewableEnergy.csv",
+    "format": {"type": "csv"}
+  },
+  "params": [
+    {
+      "name": "startingYear",
+      "value": 1966,
+      "bind": {
+        "input": "range",
+        "min": 1966,
+        "max": 2020,
+        "step": 1,
+        "name": "Starting Year:"
+      }
+    }
+  ],
+  "transform": [{"filter": "datum.Year >= startingYear"}],
+  "layer": [
+    {
+      "mark": {"type": "line", "strokeWidth": 5},
+      "encoding": {
+        "x": {"field": "Year", "type": "nominal"},
+        "y": {"field": "Percentage", "type": "quantitative"},
+        "tooltip": [
+          {"field": "Year", "type": "nominal"},
+          {"field": "Percentage", "type": "quantitative"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "fontSize": 14,
+        "color": "black",
+        "font": "Arial",
+        "fontWeight": "bold"
+      },
+      "encoding": {
+        "x": {"value": 300},
+        "y": {"value": 420},
+        "text": {
+          "value": "The world's energy generation has steadily increased since 2003"
+        }
+      }
+    }
+  ],
+  "config": {}
+};
+    vegaEmbed("#vis", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+</body>
+</html>
