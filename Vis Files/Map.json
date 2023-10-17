@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Country's Percentage of Energy Generated that is from Renewable sources (2021)",
   "width": 1000,
   "height": 600,
   "projection": {"type": "equalEarth"},
