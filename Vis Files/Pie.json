@@ -1,0 +1,28 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Australian Renewable Energy Produced (2021)",
+  "description": "Pie Chart with percentage_tooltip",
+  "width": 500,
+  "height": 500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/dngo0002/FIT3179_VIS_2/main/Vis%20Files/Data/Aus_Renew_Sources_2021(Pie).csv"
+  },
+  "mark": {"type": "arc", "tooltip": true},
+  "encoding": {
+    "theta": {"field": "TWh", "type": "quantitative", "stack": "normalize"},
+    "color": {
+      "field": "Source",
+      "type": "nominal",
+      "scale": {
+        "type": "ordinal",
+        "range": ["#009e73", "#56b4e9", "#e69f00", "#ddcc77"]
+      }
+    },
+    "tooltip": [
+      {"field": "Source", "type": "nominal"},
+      {"field": "TWh", "type": "quantitative"},
+      {"field": "Percentage", "type": "nominal"}
+    ]
+  },
+  "config": {}
+}
