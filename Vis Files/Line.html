@@ -23,14 +23,24 @@
       "bind": {
         "input": "select",
         "options": [
-          "All",
+          null,
           "Australia",
           "Germany",
           "United States",
           "United Kingdom",
           "China",
           "Japan"
-        ]
+        ],
+        "labels": [
+          "Show All",
+          "Australia",
+          "Germany",
+          "United States",
+          "United Kingdom",
+          "China",
+          "Japan"
+        ],
+        "name": "Country Filter:"
       }
     }
   },
@@ -38,7 +48,28 @@
   "encoding": {
     "x": {"field": "Year", "type": "ordinal"},
     "y": {"field": "Percentage", "type": "quantitative"},
-    "color": {"field": "Country", "type": "nominal"},
+    "color": {
+      "field": "Country",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Australia",
+          "Germany",
+          "United States",
+          "United Kingdom",
+          "China",
+          "Japan"
+        ],
+        "range": [
+          "#0072b2",
+          "#FFCE00",
+          "#5733FF",
+          "#009e73",
+          "#dc267f",
+          "#fe6100"
+        ]
+      }
+    },
     "tooltip": [
       {"field": "Country", "type": "nominal"},
       {"field": "Year", "type": "ordinal"},
