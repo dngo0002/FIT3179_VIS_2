@@ -1,6 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Australian Renewable Energy Produced (2021)",
   "description": "Pie Chart with percentage_tooltip",
   "width": 500,
   "height": 500,
