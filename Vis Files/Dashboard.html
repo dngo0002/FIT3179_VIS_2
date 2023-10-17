@@ -1,0 +1,68 @@
+<head>
+    <title>Data visualization2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Open+Sans&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #519fcb;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            text-emphasis-color: #d2d4d4;
+        }
+
+        h1, h2, h3, p {
+            margin: 20px 0;
+            text-align: center;
+            font-family: 'Open Sans';
+        }
+
+        #lineChart, #pieChart, #chloroMap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Chloro Map -->
+        <h3>Country's Percentage of Energy Produced that is from Renewable Sources (2021)</h3>
+        <div id="chloroMap">
+            <script>
+                vegaEmbed("#chloroMap", "https://raw.githubusercontent.com/dngo0002/FIT3179_VIS_2/main/Vis%20Files/Map.json", { mode: "vega-lite", width: 900, height: 600 }).then(console.log).catch(console.warn);
+            </script>
+        </div>
+
+        <!-- Line Chart -->
+        <h3>Percentage of Energy Produced that is Renewable (Australia & Top 5 GDP Countries)</h3>
+        <div id="lineChart">
+            <script>
+                vegaEmbed("#LineChart", "https://raw.githubusercontent.com/dngo0002/FIT3179_VIS_2/main/Vis%20Files/Line.json", { mode: "vega-lite", width: 900, height: 600 }).then(console.log).catch(console.warn);
+            </script>
+        </div>
+
+        <!-- Line Chart -->
+        <h3>Percentage of Energy Produced that is Renewable (Australia & Top 5 GDP Countries)</h3>
+        <div id="pieChart">
+            <script>
+                vegaEmbed("#LineChart", "https://raw.githubusercontent.com/dngo0002/FIT3179_VIS_2/main/Vis%20Files/Line.json", { mode: "vega-lite", width: 900, height: 600 }).then(console.log).catch(console.warn);
+            </script>
+        </div>
+
+    </div>
+</body>
